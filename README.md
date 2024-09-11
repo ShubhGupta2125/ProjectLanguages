@@ -25,11 +25,39 @@
 - Lightweight and easy to integrate into other projects.
 - TypeScript-based for type safety and modern JavaScript support.
 
+  ## Prerequisites
+
+- node version __16.20.2__
+
 ## Installation
 
-To install the project dependencies, simply clone the repository and run:
+To install the project dependencies, clone the repository and run:
 
 ```bash
 git clone https://github.com/ShubhGupta2125/ProjectLanguages.git
 cd ProjectLanguages
 npm install
+```
+
+## Usage
+
+# Setting token
+
+```bash
+export GIT_PROVIDER_TOKEN=<token>
+```
+or pass into the utility using --token
+
+# To fetch the top 5 used languages:
+
+```bash
+node src/build/main.js --provider GITHUB --username ShubhGupta2125 --token <Enter Github token here>
+```
+
+Right now, only GITHUB is supported, we can add more providers in the future
+
+## Testing
+
+```bash
+jest
+```
