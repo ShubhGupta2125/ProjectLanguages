@@ -35,6 +35,12 @@ cd ProjectLanguages
 npm install
 ```
 
+Compile the code
+
+```bash
+npm run build
+```
+
 ## Usage
 
 ### Setting token
@@ -56,4 +62,8 @@ Right now, only GITHUB is supported, we can add more providers in the future
 
 ```bash
 jest
+```
+or 
+```bash
+npm run test
 ```
