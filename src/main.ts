@@ -1,16 +1,22 @@
 import {Command} from 'commander';
 import {ServiceProviderFactory} from "./serviceprovider/ServiceProviderFactory";
-import {GitServiceProviderEnum} from "./serviceprovider/GitServiceProviderEnum";
+import {getProviderFromString, GitServiceProviderEnum} from "./serviceprovider/GitServiceProviderEnum";
 
 const program = new Command();
 
 program
     .version("1.0.0")
     .description('A CLI to get the most used languages from a GitHub user')
-    .option('-u, --username <username>', 'GitHub username')
-    .option('-t, --token <token>', 'GitHub token (optional)')
+    .option('-p, --provider <provider>', 'Git Provider')
+    .option('-u, --username <username>', 'Provider username')
+    .option('-t, --token <token>', 'Provider token (optional)')
     .action(async (options) => {
-        let { username, token } = options;
+        let { provider, username, token } = options;
+
+        if (!provider) {
+            console.error('Git provider is required');
+            process.exit(1);
+        }
 
         if (!username) {
             console.error('Username is required');
@@ -29,7 +35,7 @@ program
 
         try {
             // Create the service provider and fetch the most used languages
-            const serviceProvider = ServiceProviderFactory.createServiceProvider(GitServiceProviderEnum.GITHUB, token);
+            const serviceProvider = ServiceProviderFactory.createServiceProvider(getProviderFromString(provider), token);
             const languages = await serviceProvider.getMostUsedLanguages(username);
             console.log('Most used languages:', languages);
         } catch (error) {
