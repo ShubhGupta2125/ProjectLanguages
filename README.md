@@ -41,14 +41,14 @@ npm install
 
 ## Usage
 
-# Setting token
+### Setting token
 
 ```bash
 export GIT_PROVIDER_TOKEN=<token>
 ```
 or pass into the utility using --token
 
-# To fetch the top 5 used languages:
+### To fetch the top 5 used languages:
 
 ```bash
 node src/build/main.js --provider GITHUB --username ShubhGupta2125 --token <Enter Github token here>
